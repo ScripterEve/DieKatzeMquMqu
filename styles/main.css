@@ -25,14 +25,7 @@ body{
 }
 li{
     transition: 0.3s;
-    font-size: 17px;
-    font-weight: 400;
-    text-decoration: none;
 }
-li:hover{
-    color: #DDBEAA;
-}
-
 
 .introduction-container{
     display: flex;
