@@ -17,7 +17,6 @@ body{
     justify-content: space-between;
     align-items: center;
     padding-left: 2em;
-    position: fixed;
 }
 .title-logo{
     font-weight: bold;
