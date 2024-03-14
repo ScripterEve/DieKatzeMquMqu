@@ -36,3 +36,23 @@ li{
 li:hover{
     color: orange;
 }
+
+
+.introduction-container{
+    display: flex;
+    flex-direction: column;
+    background-color: #BBC6C8;
+    width: 50%;
+    min-height: 60%;
+    padding: 3em;
+    border: 3px solid;
+    box-shadow: 1px 1px 3px;
+    border-color: #6d7476;
+}
+.intro-title{
+    font-size: 3rem;
+}
+.intro-text{
+    margin-top: 1.7em;
+    font-size: 23px;
+}
