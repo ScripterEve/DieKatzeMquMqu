@@ -44,7 +44,7 @@ def login():
         if data["email"] == user["email"] and data["password"] == user["password"]:
             return jsonify(user)       
     return jsonify({'error': 'user not found'}), 404
-events = []
+
 
 events = []
 
