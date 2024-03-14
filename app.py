@@ -22,7 +22,7 @@ def create_user():
     name = data['name']
     email = data['email']
     password = data['password']
-
+    
     for user in users:
         if user["email"] == email:
             return jsonify({'error': 'email already exists'}), 400
@@ -68,6 +68,7 @@ def create_events():
     name_event = data["name_event"]
     description = data["description"]
     photo = data["photo"]
+    places = int(input("How many people can go ?: "))
 
     # Check if the username is already taken
     for event in events:
@@ -81,9 +82,14 @@ def create_events():
     event = {
         "name_event" : name_event,
         "description" : description,
-        "photo" : photo
+        "photo" : photo,
+        "places" : places
     }  
 
     events.append(event)
 
     return jsonify({'message': 'Event created successfully'})
+
+
+
+
