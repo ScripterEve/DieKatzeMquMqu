@@ -48,3 +48,24 @@ li{
     margin-top: 1.7em;
     font-size: 23px;
 }
+.contact-page{
+    width: 100%;
+    height: 60vh;
+    background-color: #BBC6C8;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.contact-features{
+   background-color: transparent;
+   width: fit-content;
+   height: fit-content;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   border: 2px solid #E5E3E4;
+   border-radius: 10px;
+    margin-left: 10%;
+    padding: 25px;
+}
