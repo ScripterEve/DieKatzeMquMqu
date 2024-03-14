@@ -4,21 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Green Gathers</title>
-    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
-    <!-- <link rel="stylesheet" href="styles/tailwind.css" /> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="javascript/main.js"></script>
     <link rel="stylesheet" href="styles/main.css" />
   </head>
 
   <body>
     <!--Header page-->
     <header class="introduction-page">
-      <nav class="nav-bar bg-gg-accent">
+      <nav class="nav-bar">
         <div class="title-logo">
           <h1>Green Gathers</h1>
         </div>
 
-        <ul>
-          <li><a href="#">HOME</a></li>
+        <ul class="justify-center gap-4">
+          <li class="text-base hover: list-none">
+            <a href="#">HOME</a>
+          </li>
           <li><a href="#">ABOUT</a></li>
           <li><a href="#">CONTACT</a></li>
           <li><a href="#">ACCOUNT</a></li>
@@ -36,10 +38,21 @@
           planet and help protect the environment.
         </p>
 
-        <button class="intro-button" type="button">Go to About page</button>
-        <button class="intro-button" type="button">See all Events</button>
+        <div class="flex flex-row justify-center items-center mt-6 gap-12">
+          <button
+            class="bg-gg-primary text-black px-2 py-1 rounded-2xl border-2 hover:bg-gg-secondary"
+            type="button"
+          >
+            Go to About page
+          </button>
+          <button
+            class="flex bg-gg-primary text-black px-2 py-1 rounded-2xl border-2 hover:bg-gg-secondary"
+            type="button"
+          >
+            See all Events
+          </button>
+        </div>
       </div>
-      <button>Hello</button>
     </header>
   </body>
 </html>

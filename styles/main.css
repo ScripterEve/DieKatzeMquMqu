@@ -21,13 +21,7 @@ body{
 .title-logo{
     font-weight: bold;
     font-size: 25px;
-}
-ul{
-    display: flex;
-    gap: 4em;
-    justify-content: center;
-    padding-right: 10em;
-    list-style: none;
+    margin-left: 2em;
 }
 li{
     transition: 0.3s;
@@ -43,6 +37,8 @@ li:hover{
 .introduction-container{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background-color: #BBC6C8;
     width: 50%;
     min-height: 60%;
@@ -58,10 +54,4 @@ li:hover{
 .intro-text{
     margin-top: 1.7em;
     font-size: 23px;
-}
-.intro-buttons{
-    background-color: #5BA199;
-    border: solid 2px;
-    border-color: #469597;
-
 }
