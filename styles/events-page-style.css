@@ -1,22 +1,14 @@
 .uppcoming-events-section{
-    background-color: #5BA199;
-    height: 60vh;
+    background-color: #BBC6C8;
+    height: 75vh;
 }
 .all-components{
     display: flex;
     flex-direction: row;
     flex-wrap: inherit;
     justify-content: flex-start;
-    width: fit-content;
-    height: fit-content;
-    background-color: #DDBEAA;
-}
-.event{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: inherit;
-    justify-content: flex-start;
-    width: 80%;
-    height: 80%;
-    background-color: #DDBEAA;
+    align-items: center;
+    min-height: 80%;
+    min-width: 80%;
+    padding: 40px;
 }
