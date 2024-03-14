@@ -45,10 +45,9 @@ def login():
             return jsonify(user)       
     return jsonify({'error': 'user not found'}), 404
 
-
 events = []
 
-@app.route("/event/<event_name>")
+@app.route("/events/<event_name>")
 def getevent(event_name):
     for event in events:
         if event_name == event["name_event"]:
@@ -65,19 +64,15 @@ def create_events():
     if 'name_event' not in data or 'description' not in data:
         return jsonify({'error': 'name and description are required'}), 400
     
+    
     name_event = data["name_event"]
     description = data["description"]
     photo = data["photo"]
 
-    # Check if the username is already taken
     for event in events:
-        if event["name_event"] == name_event:
-            return jsonify({'error': 'event already exists'}), 400
-    for event in events:
-        if event["description"] == description:
-            return jsonify({'error': 'event already exists'}), 400
+        if event["name_event"] == name_event and event["description"] == description:
+             return jsonify({'error': 'event already exists'}), 400
 
-    # Store the user information in the database
     event = {
         "name_event" : name_event,
         "description" : description,
@@ -87,3 +82,34 @@ def create_events():
     events.append(event)
 
     return jsonify({'message': 'Event created successfully'})
+
+
+
+@app.route("/events/delete", methods=['POST'])
+def delete_events():
+    data = request.json
+    if 'name_event' not in data or 'description' not in data:
+        return jsonify({'error': 'name_event and description are required'}), 400
+    
+    name_event = data.get("name_event")
+    description = data.get("description")
+
+    if name_event is None or description is None:
+        return jsonify({'error': 'name_event and description cannot be None'}), 400
+
+    events_to_delete = []
+    
+    for event in events:
+        if event["name_event"] == name_event and event["description"] == description:
+            events_to_delete.append(event)
+
+    if not events_to_delete:
+        return jsonify({'error': 'event not found'}), 404
+
+    for event in events_to_delete:
+        events.remove(event)
+
+    return jsonify({'message': 'Event deleted successfully'})
+
+
+
