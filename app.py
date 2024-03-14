@@ -16,7 +16,6 @@ def list_users():
 def create_user():
     data = request.json
 
-    # Check if required fields are present
     if 'email' not in data or 'password' not in data or 'name' not in data:
         return jsonify({'error': 'name, email and password are required'}), 400
 
@@ -24,12 +23,10 @@ def create_user():
     email = data['email']
     password = data['password']
 
-    # Check if the username is already taken
     for user in users:
         if user["email"] == email:
             return jsonify({'error': 'email already exists'}), 400
 
-    # Store the user information in the database
     user = {
         "name" : name,
         "email" : email,
@@ -37,8 +34,6 @@ def create_user():
     }  
 
     users.append(user)
-
-    # You might want to perform additional actions here, such as sending a confirmation email
 
     return jsonify({'message': 'User signed up successfully'})
 
@@ -51,6 +46,14 @@ def login():
     return jsonify({'error': 'user not found'}), 404
 events = []
 
+events = []
+
+@app.route("/event/<event_name>")
+def getevent(event_name):
+    for event in events:
+        if event_name == event["name_event"]:
+            return jsonify(event)
+    return jsonify({'error': 'event not found'}), 404
 
 @app.route("/events")
 def list_events():
