@@ -27,14 +27,16 @@ ul{
     gap: 4em;
     justify-content: center;
     padding-right: 10em;
+    list-style: none;
 }
 li{
     transition: 0.3s;
     font-size: 17px;
     font-weight: 400;
+    text-decoration: none;
 }
 li:hover{
-    color: orange;
+    color: #DDBEAA;
 }
 
 
@@ -46,6 +48,7 @@ li:hover{
     min-height: 60%;
     padding: 3em;
     border: 3px solid;
+    border-radius: 20px;
     box-shadow: 1px 1px 3px;
     border-color: #6d7476;
 }
@@ -55,4 +58,10 @@ li:hover{
 .intro-text{
     margin-top: 1.7em;
     font-size: 23px;
+}
+.intro-buttons{
+    background-color: #5BA199;
+    border: solid 2px;
+    border-color: #469597;
+
 }
