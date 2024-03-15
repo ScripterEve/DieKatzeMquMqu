@@ -10,51 +10,64 @@
   <body>
     <form class="h-96 my-16 flex flex-col justify-center items-center">
       <div
-        class="shadow-inner shadow-slate-600 bg-cyan-600 mt-30 rounded-xl w-fit h-fit px-5 py-6"
+        class="shadow-inner shadow-slate-600 bg-cyan-600 mt-30 rounded-xl w-fit h-fit px-10 py-6"
       >
-        <h2 class="text-2xl text-center font-bold">Sign up page</h2>
+        <h2 class="text-2xl text-center font-bold">Sign up</h2>
 
         <div class="flex flex-col py-5 items-center justify-center">
           <label for="name">First name</label>
 
           <input
+            required
             type="text"
             id="fname"
             placeholder="Tuesar"
-            class="border-2 rounded-2xl text-black border-black"
+            class="border-2 rounded-lg pl-3 text-black border-black"
           />
 
-          <label for="lname">Last name</label>
+          <label class="mt-2" for="lname">Last name</label>
 
           <input
+            required
             type="text"
             id="name"
             placeholder="Tuesarov"
-            class="border-2 rounded-2xl text-black border-black"
+            class="border-2 rounded-lg text-black pl-3 border-black"
           />
 
-          <label for="email">Email</label>
+          <label class="mt-2" for="email">Email</label>
 
           <input
+            required
             type="email"
             id="'email"
             placeholder=" tuesar.tuesarov@..."
-            class="mb-5 border-1 border-black text-center border-2 rounded-lg text-black"
+            class="border-2 border-black border-2 pl-3 rounded-lg text-black"
           />
 
-          <label for="password">Password</label>
+          <label class="mt-2" for="password">Password</label>
 
           <input
+            required
             type="password"
             id="password"
-            class="text-center border-2 rounded-lg text-black border-black"
+            class="border-2 pl-3 rounded-lg text-black border-black"
+            placeholder="Tuesar1234"
           />
         </div>
 
-        <button class="border-2 rounded-2xl text-black border-black px-3 py-1">
-          Sign up
-        </button>
-        <a href="home-page.html">Go back to home</a>
+        <div class="flex justify-center items-center">
+          <button
+            class="border-2 rounded-2xl text-black bg-cyan-500 text-center border-black px-4 py-0.5 hover:bg-cyan-300 transition ease-in-out duration-450"
+          >
+            Sign up
+          </button>
+        </div>
+        <div class="flex justify-center items-center pt-3">
+          <a class="underline text-white" href="home-page.html"
+            >Go back to home</a
+          >
+        </div>
       </div>
     </form>
   </body>
