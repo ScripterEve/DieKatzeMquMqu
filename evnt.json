@@ -3,5 +3,6 @@
     "description" : "",
     "photo" : "",
     "sign_up" : "",
-    "places" : 1000
+    "places" : 1000,
+    "data" : []
 }

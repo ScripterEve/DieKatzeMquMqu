@@ -2,6 +2,8 @@ from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
+
+
 # users create
 users = []
 
@@ -39,6 +41,8 @@ def create_user():
 
     return jsonify({'message': 'User signed up successfully'})
 
+
+
 # users login
 @app.route("/login", methods=['POST'])
 def login():
@@ -49,10 +53,12 @@ def login():
     return jsonify({'error': 'user not found'}), 404
 
 
+
 # http
 @app.route("/events")
 def list_events():
     return jsonify(events)
+
 
 
 # events create
@@ -68,6 +74,10 @@ def create_events():
     description = data["description"]
     photo = data.get("photo")
     places = data.get("places", 1000) 
+    date = data.get("date", )
+
+    if date is None:
+        return jsonify({'error': 'date is required'}), 400
 
     for event in events:
         if event["name_event"] == name_event and event["description"] == description:
@@ -77,12 +87,15 @@ def create_events():
         "name_event" : name_event,
         "description" : description,
         "photo" : photo,
-        "places" : places
+        "places" : places,
+        "date" : date,
+        "attendees": []  
     }  
 
     events.append(event)
 
     return jsonify({'message': 'Event created successfully'})
+
 
 
 # events description
@@ -94,11 +107,8 @@ def get_event(event_name):
     return jsonify({'error': 'event not found'}), 404
 
 
+
 # signup events
-
-sign_up = []
-my_events = []
-
 @app.route("/events/<event_name>/sign_up", methods=['POST'])
 def sign_up(event_name):
     data = request.json
@@ -111,26 +121,23 @@ def sign_up(event_name):
 
     if user is None:
         return jsonify({'error': f'User {user_email} does not exist'})
-    
-    if user_email["email"] == user_email:
-                return jsonify({'error': 'email already exists'}), 400
-    
-    
+
     for event in events:
         if event["name_event"] == event_name:
             if event["places"] > 0:
-                for user_email in event["attendees"]:  
-                    event.setdefault("attendees", []).append(user_email)
-                event["places"] -= 1 
-                user["my_events"].append(event_name)
-                return jsonify({'message': 'You have successfully signed up!'})
+                if user_email not in event["attendees"]:
+                    event["attendees"].append(user_email)
+                    event["places"] -= 1 
+                    user["my_events"].append(event_name)
+                    return jsonify({'message': 'You have successfully signed up!'})
+                else:
+                    return jsonify({'error': 'You are already signed up for this event'}), 400
             else:
                 return jsonify({'error': 'No more places available for this event'}), 400
               
     return jsonify({'error': 'Event not found'}), 404
 
     
-
 
 # sign out events
 @app.route("/events/<event_name>/sign_out", methods=['POST'])
@@ -143,11 +150,12 @@ def sign_out(event_name):
     
     for event in events:
         if event["name_event"] == event_name:
-            event.setdefault("attendees", []).remove(user_email)
-            event["places"] += 1 
-            return jsonify({'message': 'You have successfully singed out!'})
-        else:
-            return jsonify({'error': '''You couldn't sign out'''}), 400
+            if user_email in event["attendees"]:  
+                event["attendees"].remove(user_email)
+                event["places"] += 1 
+                return jsonify({'message': 'You have successfully signed out!'})
+            else:
+                return jsonify({'error': 'You are not signed up for this event'}), 400
     
     return jsonify({'error': 'Event not found'}), 404
 
@@ -181,15 +189,7 @@ def delete_events():
     return jsonify({'message': 'Event deleted successfully'})
 
 
-# my_events = []
 
-# @app.route("/my_events")
-# def my_events():
-#     data = request.json
-#     for event in events:
-#         if event not in data:
-#             return jsonify({'error': '''can't sign up for this event '''})
-    
 
 
 
@@ -198,3 +198,7 @@ def get_user(email):
         if email == user["email"]:
             return user       
     return None 
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
