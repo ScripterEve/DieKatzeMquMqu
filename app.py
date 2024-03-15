@@ -1,16 +1,14 @@
 from flask import Flask, jsonify, request
 from datetime import datetime,timedelta
+from frontend import frontend
 
 app = Flask(__name__)
-
+app.register_blueprint(frontend)
 
 
 # users create
 users = []
 
-@app.route("/")
-def index():
-    return "Hello, World!"
 
 @app.route("/users")
 def list_users():
