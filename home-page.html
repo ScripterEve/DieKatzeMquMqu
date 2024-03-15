@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Green Gathers</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="javascript/main.js"></script>
+    <script src="javascript/colors.js"></script>
     <link rel="stylesheet" href="styles/main.css" />
   </head>
 
@@ -22,10 +22,8 @@
             <a href="#intro-section">HOME</a>
 
           </li>
-          <li
-            class="text-base hover:text-gg-accent transition ease-in-out duration-450 list-none"
-          >
-            <a href="#">EVENTS</a>
+          <li class="text-base hover:text-gg-accent list-none">
+            <a class="events-link" href="#">EVENTS</a>
           </li>
           <li class="text-base hover:text-gg-accent list-none">
             <a href="#contact-section">CONTACT</a>
@@ -37,6 +35,18 @@
           </li>
         </ul>
       </nav>
+
+      <div class="events-dropdown-menu">
+        <li>
+          <a href="#">MY EVENTS</a>
+        </li>
+        <li>
+          <a href="#">UPCOMING EVENTS</a>
+        </li>
+        <li>
+          <a href="#">ALL EVENTS</a>
+        </li>
+      </div>
 
       <div class="introduction-container">
         <h2 class="intro-title">Welcome to Green Gathers</h2>
@@ -65,7 +75,6 @@
         </div>
       </div>
     </header>
-
     <!--Footer page-->
     <section
       id="contact-section"
