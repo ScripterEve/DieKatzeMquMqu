@@ -19,7 +19,7 @@
 
             <input
               type="email"
-              id="'email"
+              id="email"
               placeholder=" tuesar.tuesarov@com"
               class="mb-5 border-1 border-black text-center border-2 rounded-lg text-black"
             />
@@ -34,27 +34,31 @@
             />
           </div>
 
-          <p class="text-none text-blac">
+          <p class="text-none text-black">
             Don't have an account?
-            <a class="underline text-orange-500" href="signUpPage.html">
+            <a class="underline text-white" href="signUpPage.html">
               Create one!</a
             >
           </p>
 
           <div class="flex justify-center">
             <button
-              class="bg-cyan-500 hover:bg-cyan-300 transition ease-in-out duration-450 border-2 rounded-2xl text-center border-black my-2 px-5 py-0.5"
+              type="button"
+              onclick="login()"
+              class="bg-sky-600 hover:bg-sky-400 transition ease-in-out duration-450 border-2 rounded-2xl text-center border-black my-2 px-5 py-0.5"
             >
               Log in
             </button>
           </div>
           <div class="flex justify-center items-center pt-1">
-            <a class="underline text-orange-500" href="home-page.html"
+            <a class="underline text-white" href="home-page.html"
               >Go back to home</a
             >
           </div>
         </div>
       </form>
     </section>
+
+    <script src="javascript/api.js"></script>
   </body>
 </html>
