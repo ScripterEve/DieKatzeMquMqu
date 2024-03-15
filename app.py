@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, request
+from datetime import datetime,timedelta
 
 app = Flask(__name__)
 
@@ -88,7 +89,7 @@ def create_events():
         "description" : description,
         "photo" : photo,
         "places" : places,
-        "date" : date,
+        "date" : datetime.strptime(date, "%d.%m.%Y").date(),
         "attendees": []  
     }  
 
@@ -189,6 +190,18 @@ def delete_events():
     return jsonify({'message': 'Event deleted successfully'})
 
 
+
+@app.route("/events/upcoming")
+def check_upcoming_events():
+    today = datetime.now().date()
+    upcoming_events = []
+
+    for event in events:
+        if event["date"] - today <= timedelta(days = 7):
+            remaining_days = ( event["date"] - today).days
+            upcoming_events.append((event, remaining_days))
+
+    return jsonify(upcoming_events) 
 
 
 
