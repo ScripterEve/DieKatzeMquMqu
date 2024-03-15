@@ -10,8 +10,8 @@ body{
 }
 .nav-bar{
     width: 100%;
-    height: 10vh;
-    background-color: #5b95a1;
+    height: 13vh;
+    background-color: #5BA199;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -26,6 +26,29 @@ body{
 li{
     transition: 0.3s;
 }
+
+.introduction-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #BBC6C8;
+    width: 50%;
+    min-height: 60%;
+    padding: 3em;
+    border: 3px solid;
+    border-radius: 20px;
+    box-shadow: 1px 1px 3px;
+    border-color: #6d7476;
+}
+.intro-title{
+    font-size: 3rem;
+}
+.intro-text{
+    margin-top: 1.7em;
+    font-size: 23px;
+}
+
 .contact-page{
     width: 100%;
     height: 60vh;

@@ -1,0 +1,27 @@
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #BBC6C8;
+}
+
+h1{
+    font-size: 1.5rem; 
+    margin-bottom: 20px;
+    justify-content:center;
+    display:flex;
+}
+
+.image{
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.participation-button{
+    border: 2px solid #BBC6C8;
+    border-radius: 30px;
+    color: #469597;
+    padding: 10px 10px;
+    margin:auto;
+    display: flex
+}
