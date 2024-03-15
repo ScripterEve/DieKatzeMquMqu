@@ -1,6 +1,7 @@
 {"email": "eser.example@gmail.com",
  "name": "Dve imena",
- "password": "password"
+ "password": "password",
+ "my_events" : []
 }
 
 

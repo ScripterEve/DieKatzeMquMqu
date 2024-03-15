@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
+# users create
 users = []
 
 @app.route("/")
@@ -30,13 +31,15 @@ def create_user():
     user = {
         "name" : name,
         "email" : email,
-        "password" : password
+        "password" : password,
+        "my_events" : []
     }  
 
     users.append(user)
 
     return jsonify({'message': 'User signed up successfully'})
 
+# users login
 @app.route("/login", methods=['POST'])
 def login():
     data = request.json
@@ -45,43 +48,15 @@ def login():
             return jsonify(user)       
     return jsonify({'error': 'user not found'}), 404
 
-events = []
 
-@app.route("/events/<event_name>")
-def getevent(event_name):
-    data = request.json
-    for event in events:
-        if event_name == event["name_event"]:
-            return jsonify(event)
-    return jsonify({'error': 'event not found'}), 404
-
-my_events = []
-
-@app.route("/events/<event_name>/sign_up", methods=['POST'])
-def signup(event_name):
-    data = request.json
-    user_email = data.get("email") 
-    
-    if not user_email:
-        return jsonify({'error': 'email is required'}), 400
-    
-    for event in events:
-        if event["name_event"] == event_name:
-            if event["places"] > 0:
-                event.setdefault("attendees", []).append(user_email)
-                event["places"] -= 1 
-                return jsonify({'message': 'You have successfully signed up!'})
-            else:
-                return jsonify({'error': 'No more places available for this event'}), 400
-    
-    return jsonify({'error': 'Event not found'}), 404
-
-
+# http
 @app.route("/events")
 def list_events():
     return jsonify(events)
 
 
+# events create
+events = []
 
 @app.route("/events/create", methods=['POST'])
 def create_events():
@@ -92,7 +67,7 @@ def create_events():
     name_event = data["name_event"]
     description = data["description"]
     photo = data.get("photo")
-    places = data.get("places")  
+    places = data.get("places", 1000) 
 
     for event in events:
         if event["name_event"] == name_event and event["description"] == description:
@@ -110,11 +85,75 @@ def create_events():
     return jsonify({'message': 'Event created successfully'})
 
 
+# events description
+@app.route("/events/<event_name>")
+def get_event(event_name):
+    for event in events:
+        if event_name == event["name_event"]:
+            return jsonify(event)
+    return jsonify({'error': 'event not found'}), 404
+
+
+# signup events
+
+sign_up = []
+my_events = []
+
+@app.route("/events/<event_name>/sign_up", methods=['POST'])
+def sign_up(event_name):
+    data = request.json
+    user_email = data.get("email") 
+    
+    if not user_email:
+        return jsonify({'error': 'email is required'}), 400
+
+    user = get_user(user_email)
+
+    if user is None:
+        return jsonify({'error': f'User {user_email} does not exist'})
+    
+    if user_email["email"] == user_email:
+                return jsonify({'error': 'email already exists'}), 400
+    
+    
+    for event in events:
+        if event["name_event"] == event_name:
+            if event["places"] > 0:
+                for user_email in event["attendees"]:  
+                    event.setdefault("attendees", []).append(user_email)
+                event["places"] -= 1 
+                user["my_events"].append(event_name)
+                return jsonify({'message': 'You have successfully signed up!'})
+            else:
+                return jsonify({'error': 'No more places available for this event'}), 400
+              
+    return jsonify({'error': 'Event not found'}), 404
+
+    
+
+
+# sign out events
+@app.route("/events/<event_name>/sign_out", methods=['POST'])
+def sign_out(event_name):
+    data = request.json
+    user_email = data.get("email") 
+    
+    if not user_email:
+        return jsonify({'error': 'email is required'}), 400
+    
+    for event in events:
+        if event["name_event"] == event_name:
+            event.setdefault("attendees", []).remove(user_email)
+            event["places"] += 1 
+            return jsonify({'message': 'You have successfully singed out!'})
+        else:
+            return jsonify({'error': '''You couldn't sign out'''}), 400
+    
+    return jsonify({'error': 'Event not found'}), 404
 
 
 
-
-
+# deleting events
 @app.route("/events/delete", methods=['POST'])
 def delete_events():
     data = request.json
@@ -154,4 +193,8 @@ def delete_events():
 
 
 
-
+def get_user(email):
+    for user in users:
+        if email == user["email"]:
+            return user       
+    return None 
