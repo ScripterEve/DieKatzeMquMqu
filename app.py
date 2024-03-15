@@ -49,14 +49,39 @@ events = []
 
 @app.route("/events/<event_name>")
 def getevent(event_name):
+    data = request.json
     for event in events:
         if event_name == event["name_event"]:
             return jsonify(event)
     return jsonify({'error': 'event not found'}), 404
 
+my_events = []
+
+@app.route("/events/<event_name>/sign_up", methods=['POST'])
+def signup(event_name):
+    data = request.json
+    user_email = data.get("email") 
+    
+    if not user_email:
+        return jsonify({'error': 'email is required'}), 400
+    
+    for event in events:
+        if event["name_event"] == event_name:
+            if event["places"] > 0:
+                event.setdefault("attendees", []).append(user_email)
+                event["places"] -= 1 
+                return jsonify({'message': 'You have successfully signed up!'})
+            else:
+                return jsonify({'error': 'No more places available for this event'}), 400
+    
+    return jsonify({'error': 'Event not found'}), 404
+
+
 @app.route("/events")
 def list_events():
     return jsonify(events)
+
+
 
 @app.route("/events/create", methods=['POST'])
 def create_events():
@@ -64,11 +89,10 @@ def create_events():
     if 'name_event' not in data or 'description' not in data:
         return jsonify({'error': 'name and description are required'}), 400
     
-    
     name_event = data["name_event"]
     description = data["description"]
-    photo = data["photo"]
-    places = int(input("How many people can go ?: "))
+    photo = data.get("photo")
+    places = data.get("places")  
 
     for event in events:
         if event["name_event"] == name_event and event["description"] == description:
@@ -84,6 +108,10 @@ def create_events():
     events.append(event)
 
     return jsonify({'message': 'Event created successfully'})
+
+
+
+
 
 
 
@@ -112,5 +140,18 @@ def delete_events():
         events.remove(event)
 
     return jsonify({'message': 'Event deleted successfully'})
+
+
+# my_events = []
+
+# @app.route("/my_events")
+# def my_events():
+#     data = request.json
+#     for event in events:
+#         if event not in data:
+#             return jsonify({'error': '''can't sign up for this event '''})
+    
+
+
 
 
