@@ -1,0 +1,45 @@
+body{
+    background-color: #BBC6C8;
+}
+
+h1{
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color:black
+}
+
+h2{
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color:black
+}
+.Create{
+    justify-content: center;
+    display:flex;
+  }
+.Delete{
+    justify-content: center;
+    display: flex;
+  }
+  .create {
+    background-color: #469597; 
+    color: #E5E3E4;  
+    padding: 30px;  
+    font-size: 1.4rem;  
+    border:1px;
+    border-radius: 5px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  
+.delete{
+    display:flex;
+    justify-content:center;
+    background-color: #469597;
+    color:#E5E3E4;  
+    padding: 30px;  
+    font-size: 1.4rem;  
+    border: 1px;
+    border-radius: 5px; 
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+ 
