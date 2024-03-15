@@ -7,8 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="javascript/main.js"></script>
     <link rel="stylesheet" href="styles/events-page-style.css" />
-    <link rel="stylesheet" href="home-page.html" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles/styles.css" />
   </head>
   <body>
     <!--Upcoming events page-->
@@ -18,7 +17,7 @@
       >
         <h1 class="text-2xl font-bold">Upcoming events</h1>
       </div>
-      <div class="all-components">
+      <div id="container" class="all-components">
         <div
           class="flex shadow-md shadow-slate-600 m-10 flex-col items-center w-80 h-fit bg-gg-secondary border-2 border-white rounded-xl py-7 px-12"
         >
@@ -175,5 +174,10 @@
         </div>
       </div>
     </section>
+
+    <script src="javascript/api.js"></script>
+    <script>
+      GetEvents();
+    </script>
   </body>
 </html>
