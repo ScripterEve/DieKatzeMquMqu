@@ -1,6 +1,6 @@
 .uppcoming-events-section{
-    background-color: #BBC6C8;
-    height: 75vh;
+    background-color: #f8f1e5;
+    height: 90vh;
 }
 .all-components{
     display: flex;
@@ -8,7 +8,7 @@
     flex-wrap: inherit;
     justify-content: flex-start;
     align-items: center;
-    min-height: 80%;
-    min-width: 80%;
+    height: 100%;
+    width: 100%;
     padding: 40px;
 }
