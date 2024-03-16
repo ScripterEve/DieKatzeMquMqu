@@ -293,7 +293,7 @@ function GetUserEvents() {
         // user is not logged in
         showToast("You must log into the system to see your events!", 10)
         setTimeout(() => {
-            document.location.href = "/signUpPage.html"
+            document.location.href = "/logInPage.html"
         }, 3000);
         return
     }
