@@ -5,11 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Events page</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="javascript/main.js"></script>
+    <script src="javascript/colors.js"></script>
     <link rel="stylesheet" href="styles/events-page-style.css" />
     <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="styles/main.css" />
   </head>
   <body>
+    <nav class="nav-bar">
+        <div class="title-logo">
+          <h1>Green Gathers</h1>
+        </div>
+
+        <ul class="flex flex-row justify-center gap-14 pr-20">
+          <li class="text-base hover:text-gg-accent list-none">
+            <a href="/">HOME</a>
+          </li>
+          <li class="text-base hover:text-gg-accent list-none">
+            <a class="events-link" href="#">EVENTS</a>
+          </li>
+          <li
+            class="text-base hover:text-gg-accent transition ease-in-out duration-450 list-none"
+          >
+            <a href="logInPage.html">PROFILE</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="events-dropdown-menu">
+        <li>
+          <a href="/myEvents.html">MY EVENTS</a>
+        </li>
+        <li>
+          <a href="/EventsPage.html">ALL EVENTS</a>
+        </li>
+      </div>
+
     <!--Upcoming events page-->
     <section class="upcoming-events-section" class="bg-pale-pink">
       <div
@@ -17,167 +47,55 @@
       >
         <h1 class="text-2xl font-bold">Upcoming events</h1>
       </div>
-      <div id="container" class="all-components">
-        <div
-          class="flex shadow-md shadow-slate-600 m-10 flex-col items-center w-80 h-fit bg-gg-secondary border-2 border-white rounded-xl py-7 px-12"
-        >
-          <div class="w-fit h-fit flex justify-center items-center">
-            <img
-              class="border-1 shadow-md border-white rounded-xl"
-              src="images/09550f73b89c544a64427eee5af083a5.jpg"
-              alt="Image of students recycling"
-            />
-          </div>
-          <h3 class="pt-3 font-bold text-lg text-center">
-            Рециклирай пластмасови отпадъци
-          </h3>
-          <p class="text-sm text-center">
-            Доброволци за Рециклиране на Пластмаса
-          </p>
-
-          <div
-            class="flex flex-col justify-center items-center w-fit h-fit my-4 gap-y-3.5"
-          >
-            <button
-              class="border-2 border-white rounded-2xl px-4 py-1 shadow-inner shadow-slate-500 px-4 text-center hover:bg-gg-accent transition ease-in-out duration-450"
-            >
-              Sign up for event
-            </button>
-
-            <a href="Upcoming-events-description1.html">
-              <button
-                class="border-2 border-white px-4 py-1 shadow-inner shadow-slate-500 rounded-2xl hover:bg-gg-accent transition ease-in-out duration-450"
-              >
-                See more
-              </button>
-            </a>
-          </div>
-
-          <div
-            class="w-fit h-fit border-2 border-white px-4 py-2 shadow-inner shadow-slate-500"
-          >
-            <h1>000 places remaining</h1>
-          </div>
-
-          <a
-            class="mt-2 underline text-blue-600 text-center"
-            href="https://timeheroes.org/bg/dobraplastic/dobrovoltsi-za-retsiklirane-na-plastmasa"
-            target="_blank"
-            >Open original site</a
-          >
-        </div>
-
-        <div
-          class="flex shadow-md shadow-slate-600 flex-col items-center w-80 h-fit bg-gg-secondary border-2 border-white rounded-xl py-7 m-10 px-12"
-        >
-          <div class="flex justify-center items-center w-fit h-fit">
-            <img
-              class="border-1 shadow-md border-white rounded-xl"
-              src="images/1200_zasajdane-darvo.webp"
-              alt="Image of students planting a tree"
-            />
-          </div>
-          <h3 class="pt-3 font-bold text-lg text-center">
-            Засади дърво по случай...
-          </h3>
-
-          <p class="text-sm text-center">
-            Доброволци за Рециклиране на Пластмаса
-          </p>
-
-          <div
-            class="flex flex-col justify-center items-center w-fit h-fit my-4 gap-y-3.5"
-          >
-            <button
-              class="border-2 border-white rounded-2xl px-4 py-1 shadow-inner shadow-slate-500 px-4 text-center hover:bg-gg-accent transition ease-in-out duration-450"
-            >
-              Sign up for event
-            </button>
-
-            <a
-              href="https://kupatanageroite.com/mission/zasadi-durvo-po-sluchai-svetovniya-den-na-gorite"
-            >
-              <button
-                class="border-2 border-white px-4 py-1 shadow-inner shadow-slate-500 rounded-2xl hover:bg-gg-accent transition ease-in-out duration-450"
-              >
-                See more
-              </button>
-            </a>
-          </div>
-
-          <div
-            class="w-fit h-fit border-2 border-white px-4 py-2 shadow-inner shadow-slate-500"
-          >
-            <h1>Places remaining: 0</h1>
-          </div>
-
-          <a
-            class="mt-2 underline text-blue-600 text-center"
-            href="https://timeheroes.org/bg/dobraplastic/dobrovoltsi-za-retsiklirane-na-plastmasa"
-            target="_blank"
-            >Open original site</a
-          >
-        </div>
+      <div id="upcoming-events-container" class="all-components">
       </div>
     </section>
-    <h1 class="title">All events</h1>
-    <br />
+    <h1 class="font-bold text-center title">All events</h1>
     <section>
-      <div class="container">
-        <div class="box">
-          <img
-            src="images/a6d29275526ca3f9a76084d39655656d.jpg"
-            alt="HelpTheZoo"
-          />
-          <h3>Помагай с поддържането на хигиената, клетките и...</h3>
-          <p>
-            "Зелени Балкани" е най-старата природозащитна неправителствена
-            организация...
-          </p>
-          <a
-            href="https://timeheroes.org/bg/green-balkans-sz/pomagai-na-spasitelniya-tsentar-za-divi-zhivotni-stara-zagora"
-            >Link to the event!</a
-          >
-          <br /><br />
-          <a href="AllEvents1.html">
-            <button class="see-more-button">See more...</button>
-          </a>
-          <br />
-          <a
-            href="https://timeheroes.org/bg/auth/register?next=/bg/green-balkans-sz/pomagai-na-spasitelniya-tsentar-za-divi-zhivotni-stara-zagora/apply"
-          >
-            <button class="sign-up-for-event-button">Sign up for event!</button>
-          </a>
-          <br />
-          <button class="places-remaining-button">Places remaining:0</button>
-        </div>
-        <div class="box">
-          <img src="images/Screenshot 2024-03-15 090923.png" alt="ITcourses" />
-          <h3>World Education Fair Bulgaria 2024</h3>
-          <p>
-            Student recruitment event for undergraduate and postgraduate
-            programs, MBA, high school programs, language programs, gap years...
-          </p>
-          <a href="https://10times.com/iwef-bulgaria-plovdiv"
-            >Link to the event!</a
-          >
-          <br /><br />
-          <a href="AllEvents2.html">
-            <button class="see-more-button">See more...</button>
-          </a>
-          <br />
-          <a href="https://10times.com/iwef-bulgaria-plovdiv/login">
-            <button class="sign-up-for-event-button">Sign up for event!</button>
-          </a>
-          <br />
-          <button class="places-remaining-button">Places remaining:0</button>
-        </div>
+      <div id="all-events-container" class="container">
       </div>
     </section>
+
+    <section
+      id="contact-section"
+      class="flex flex-row justify-center items-center bg-gg-dark-gray h-80 py-8"
+    >
+      <div
+        class="flex flex-col w-25 h-35 px-20 py-5 rounded-xl mx-20 justify-center items-center border-2 border-white text-center"
+      >
+        <h3 class="font-bold text-base text-center pb-8">How to contact us:</h3>
+        <a class="text-base py-2 text-center" href="#"
+          >Email : tues@elsys-bg.org</a
+        >
+        <a class="text-base py-3 text-center" href="#">Phone: 0886 75 10 94</a>
+        <a class="text-base py-3 text-center" href="#">Address: </a>
+        <a class="text-base py-3 text-center" href="#"></a>
+      </div>
+      <div
+        class="flex flex-col w-25 mx-20 h-35 px-20 py-5 rounded-xl justify-center items-center border-2 border-white text-center"
+      >
+        <h3 class="font-bold text-base text-center pb-8">Creators:</h3>
+        <p class="text-base py-1.5 text-center">Stella</p>
+        <p class="text-base py-1.5 text-center">Eva</p>
+        <p class="text-base py-1.5 text-center">Alexander</p>
+        <p class="text-base py-1.5 text-center">Denislav</p>
+        <p class="text-base py-1.5 text-center">Mariyan</p>
+      </div>
+
+      <img
+        class="w-24 h-24 relative"
+        src="images/pngtree-pink-cute-cat-icon-animal-png-yuri-png-image_5230763-removebg-preview.png"
+        alt="cat image"
+      />
+    </section>
+
+    <div id="toast" class="hidden fixed z-50 top-64 left-1/2 -translate-x-1/4 bg-gg-light-gray p-2 rounded-2xl shadow shadow-slate-600 text-black w-96 h-24"></div>
 
     <script src="javascript/api.js"></script>
     <script>
+      GetUpcomingEvents();
       GetEvents();
     </script>
+    <script src="javascript/main.js"></script>
   </body>
 </html>

@@ -10,7 +10,7 @@
   <body>
     <form class="h-96 my-16 flex flex-col justify-center items-center">
       <div
-        class="shadow-inner shadow-slate-600 bg-cyan-600 mt-56 rounded-xl w-fit h-fit px-12 py-6"
+        class="shadow-inner shadow-slate-600 bg-cyan-600 mt-30 rounded-xl w-fit h-fit px-5 py-6"
       >
         <h2 class="text-2xl text-center font-bold">Sign up page</h2>
 
@@ -21,16 +21,16 @@
             type="text"
             id="name"
             placeholder="Tuesar"
-            class="border-2 rounded-xl py-0.5 px-3 text-black border-black"
+            class="border-2 rounded-2xl text-black border-black"
           />
 
-          <label class="pt-3" for="email">Email</label>
+          <label for="email">Email</label>
 
           <input
             type="email"
             id="email"
             placeholder=" tuesar.tuesarov@..."
-            class="mb-5 border-1 border-black px-3 py-0.5 border-2 rounded-xl text-black"
+            class="mb-5 border-1 border-black text-center border-2 rounded-lg text-black"
           />
 
           <label for="password">Password</label>
@@ -38,23 +38,18 @@
           <input
             type="password"
             id="password"
-            placeholder="tuesar1234"
-            class="border-2 rounded-xl px-3 py-0.5 text-black border-black"
+            class="text-center border-2 rounded-lg text-black border-black"
           />
         </div>
 
-        <div class="flex flex-col items-center justify-center p-1">
-          <button
-            type="button"
-            onclick="register()"
-            class="border-2 rounded-2xl hover:bg-sky-600 transition ease-in-out duration-450 text-black border-black px-3 py-1 hover:bg-cyan-600"
-          >
-            Sign up
-          </button>
-          <a class="mt-2 underline text-white" href="home-page.html"
-            >Go back to home</a
-          >
-        </div>
+        <button
+          type="button"
+          onclick="register()"
+          class="border-2 rounded-2xl text-black border-black px-3 py-1"
+        >
+          Sign up
+        </button>
+        <a href="home-page.html">Go back to home</a>
       </div>
     </form>
 
