@@ -4,22 +4,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create/Delete Events</title>
-    <link rel="stylesheet" href="stylesCreateDelete.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="javascript/colors.js"></script>
+    <link rel="stylesheet" href="styles/main.css" />
+    <!-- <link rel="stylesheet" href="styles/stylesCreateDelete.css"> -->
 
 </head>
-<body>
-    <h1>Create/Delete an Event</h1>
-    <h2>In this page you can either create or delete an event. You can only delete events hosted by you.</h2>
-    <br>
-    <br>
-    <div class="Create"><a>
-        <button class="create" type="button">Create an event</button>
-    </a></div>
-    <br>
-    <br>
-    <br>
-   <div class="Delete"> <a>
-        <button class="delete" type="button">Delete an event</button>
-    </a></div>
+<body class="bg-gg-light-gray">
+    <nav class="nav-bar">
+        <div class="title-logo">
+          <h1>Green Gathers</h1>
+        </div>
+
+        <ul class="flex flex-row justify-center gap-14 pr-20">
+          <li class="text-base hover:text-gg-accent list-none">
+            <a href="/">HOME</a>
+          </li>
+          <li class="text-base hover:text-gg-accent list-none">
+            <a class="events-link" href="#">EVENTS</a>
+          </li>
+          <li
+            class="text-base hover:text-gg-accent transition ease-in-out duration-450 list-none"
+          >
+            <a href="logInPage.html">PROFILE</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="events-dropdown-menu">
+        <li>
+          <a href="/myEvents.html">MY EVENTS</a>
+        </li>
+        <li>
+          <a href="/EventsPage.html">ALL EVENTS</a>
+        </li>
+      </div>
+
+    <div id="create-delete-buttons" class="flex flex-row w-1/2 mx-auto gap-4 mt-24">
+        <div class="flex mx-auto" >
+            <button class="border-2 bg-gg-primary text-2xl font-bold p-10 rounded-lg" type="button"
+            onclick="showForm()">Create an event</button>
+        </div>
+        <div class="flex mx-auto relative">
+            <button class="border-2 bg-gg-accent text-white text-2xl font-bold p-10 rounded-lg" type="button">Delete an event</button>
+            <span class="absolute bottom-0 text-center pointer-events-none text-slate-700 text-sm">You can only delete events hosted by you.</span>
+        </div>
+    </div>
+    <div id="create-event" class=" hidden flex flex-col justify-center items-center bg-gg-dark-gray rounded w-1/2 mt-8 mx-auto p-4">
+        <form>
+            <label>
+                Title
+                <input class="flex mt-2 w-full rounded border-2 border-gg-accent text-black" id="title" type="text" placeholder="Save the turtles" />
+            </label>
+            <label>
+                Description
+                <textarea class="flex mt-2 w-full rounded border-2 border-gg-accent text-black" id="description"></textarea>
+            </label>
+            <label>
+                Image
+                <input id="photo" type="text" class="flex mt-2 w-full rounded border-2 border-gg-accent text-black" />
+            </label>
+            <label>
+                Maximum attendees
+                <input class="flex mt-2 w-full rounded border-2 border-gg-accent text-black" id="places" type="number" placeholder="№ attendees" />
+            </label>
+            <label>
+                Event date
+                <input class="flex mt-2 w-full rounded border-2 border-gg-accent text-black" id="date" type="date" />
+            </label>
+            <button type="button" class="bg-gg-primary text-black px-2 py-1 rounded-2xl border-2 border-black hover:bg-gg-secondary" onclick="CreateEvent()">Create event</button>
+        </form>
+    </div>
+    <script src="javascript/main.js"></script>
+    <script src="javascript/api.js"></script>
+    <script>
+        function showForm() {
+            document.querySelector("#create-delete-buttons").classList.toggle("hidden")
+            document.querySelector("#create-event").classList.toggle("hidden")
+        }
+    </script>
+    <div id="toast" class="hidden fixed z-50 top-64 left-1/2 -translate-x-1/4 bg-gg-light-gray border-2 border-gg-primary p-2 rounded-2xl shadow shadow-slate-600 text-black w-96 h-24"></div>
 </body>
 </html>

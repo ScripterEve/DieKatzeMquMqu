@@ -4,29 +4,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Events page</title>
-    <link rel="stylesheet" href="stylesMyEvents.css">
+    <!-- <link rel="stylesheet" href="stylesMyEvents.css"> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="javascript/colors.js"></script>
+    <link rel="stylesheet" href="styles/main.css" />
 </head>
 <body>
+<div class="flex flex-col h-screen">
+  <nav class=" nav-bar">
+    <div class="title-logo">
+      <h1>Green Gathers</h1>
+    </div>
+
+    <ul class="flex flex-row justify-center gap-14 pr-20">
+      <li class="text-base hover:text-gg-accent list-none">
+        <a href="#intro-section">HOME</a>
+      </li>
+      <li class="text-base hover:text-gg-accent list-none">
+        <a class="events-link" href="#">EVENTS</a>
+      </li>
+      <li
+        class="text-base hover:text-gg-accent transition ease-in-out duration-450 list-none"
+      >
+        <a href="logInPage.html">PROFILE</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="events-dropdown-menu">
+    <li>
+      <a href="/myEvents.html">MY EVENTS</a>
+    </li>
+    <li>
+      <a href="/EventsPage.html">ALL EVENTS</a>
+    </li>
+  </div>
+
+  <section class="grow">
     <div  class=title>
       <h2>My Events</h2>
     </div>
     <br>
-    <div class="container">
-      <div class="box">
-        <img src="images/a6d29275526ca3f9a76084d39655656d.jpg" alt="HelpTheZoo">
-        <h3>Помагай с поддържането на хигиената, клетките и...</h3>
-        <p>"Зелени Балкани" е най-старата природозащитна неправителствена организация...</p>
-        <div class=linkEvent>
-          <a href="https://timeheroes.org/bg/green-balkans-sz/pomagai-na-spasitelniya-tsentar-za-divi-zhivotni-stara-zagora">Link to the event!
-          </a>
-        </div>
-        <br>
-        <a href="AllEvents1.html">
-            <button class="see-more-button">See more...</button>
-            </a>
-      </div>
-      
+    <div id="container" class="container">
     </div>
   </section>
+
+  <section
+      id="contact-section"
+      class="flex flex-row justify-center items-center bg-gg-dark-gray h-80 py-8"
+    >
+      <div
+        class="flex flex-col w-25 h-35 px-20 py-5 rounded-xl mx-20 justify-center items-center border-2 border-white text-center"
+      >
+        <h3 class="font-bold text-base text-center pb-8">How to contact us:</h3>
+        <a class="text-base py-2 text-center" href="#"
+          >Email : tues@elsys-bg.org</a
+        >
+        <a class="text-base py-3 text-center" href="#">Phone: 0886 75 10 94</a>
+        <a class="text-base py-3 text-center" href="#">Address: </a>
+        <a class="text-base py-3 text-center" href="#"></a>
+      </div>
+      <div
+        class="flex flex-col w-25 mx-20 h-35 px-20 py-5 rounded-xl justify-center items-center border-2 border-white text-center"
+      >
+        <h3 class="font-bold text-base text-center pb-8">Creators:</h3>
+        <p class="text-base py-1.5 text-center">Stella</p>
+        <p class="text-base py-1.5 text-center">Eva</p>
+        <p class="text-base py-1.5 text-center">Alexander</p>
+        <p class="text-base py-1.5 text-center">Denislav</p>
+        <p class="text-base py-1.5 text-center">Mariyan</p>
+      </div>
+
+      <img
+        class="w-24 h-24 relative"
+        src="images/pngtree-pink-cute-cat-icon-animal-png-yuri-png-image_5230763-removebg-preview.png"
+        alt="cat image"
+      />
+    </section>
+    </div>
+    <div id="toast" class="hidden fixed z-50 top-64 left-1/2 -translate-x-1/4 bg-gg-light-gray p-2 rounded-2xl shadow shadow-slate-600 text-black w-96 h-24"></div>
+    <script src="javascript/main.js"></script>
+    <script src="javascript/api.js"></script>
+    <script>
+      GetUserEvents();
+    </script>
 </body>
 </html>

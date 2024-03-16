@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="javascript/main.js" />
+    <script src="javascript/colors.js"></script>
   </head>
   <body>
     <section>
       <form class="h-96 my-16 flex flex-col justify-center items-center">
         <div
-          class="shadow-inner shadow-slate-600 bg-cyan-600 mt-56 rounded-xl w-fit h-fit px-10 py-10"
+          class="shadow-inner shadow-slate-600 bg-gg-primary text-gg-light-gray mt-30 rounded-xl w-fit h-fit px-5 py-6"
         >
           <h2 class="text-2xl text-center font-bold">Log in page</h2>
           <div class="flex flex-col py-5 items-center justify-center">
@@ -21,7 +21,7 @@
               type="email"
               id="email"
               placeholder=" tuesar.tuesarov@com"
-              class="mb-5 px-5 py-0.5 border-1 border-black border-2 rounded-xl text-black"
+              class="mb-5 border-1 border-black text-center border-2 rounded-lg text-black"
             />
 
             <label for="password">Password</label>
@@ -30,13 +30,13 @@
               type="password"
               id="password"
               placeholder="tuesar1234"
-              class="px-5 py-0.5 border-2 rounded-xl text-black border-black"
+              class="text-center border-2 rounded-lg text-black border-black"
             />
           </div>
 
-          <p class="text-none text-black">
+          <p class="text-sm text-gg-dark-gray">
             Don't have an account?
-            <a class="underline text-white" href="signUpPage.html">
+            <a class="underline text-gg-accent" href="signUpPage.html">
               Create one!</a
             >
           </p>
@@ -45,7 +45,7 @@
             <button
               type="button"
               onclick="login()"
-              class="hover:bg-sky-600 transition ease-in-out duration-450 border-2 rounded-2xl text-center border-black my-3.5 px-5 py-0.5"
+              class="border-2 border-gg-dark-gray rounded-2xl px-4 py-1 px-4 text-gg-dark-gray font-bold text-center hover:bg-gg-accent hover:text-slate-700 transition ease-in-out duration-450 my-2 px-5 py-0.5"
             >
               Log in
             </button>

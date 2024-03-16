@@ -40,7 +40,13 @@ def create_user():
 
     return jsonify({'message': 'User signed up successfully'})
 
+@app.route("/users/<email>/events")
+def get_user_events(email):
+    user = get_user(email)
+    if not user:
+        return jsonify({'error': f"User {email} does not exist"}), 401
 
+    return jsonify(user["my_events"])
 
 # users login
 @app.route("/login", methods=['POST'])
@@ -61,7 +67,33 @@ def list_events():
 
 
 # events create
-events = []
+events = [
+    {
+        "name_event": "Рециклирай пластмасови отпадъци",
+        "description": "Доброволци за Рециклиране на Пластмаса",
+        "photo": "images/09550f73b89c544a64427eee5af083a5.jpg",
+        "places": 50,
+        "date": datetime.strptime("18.03.2024", "%d.%m.%Y").date(),
+        "attendees": []
+    },
+    {
+        "name_event": "Помагай с поддържането на хигиената, клетките и...",
+        "description": "„Зелени Балкани“ е най-старата природозащитна неправителствена организация...",
+        "photo": "images/a6d29275526ca3f9a76084d39655656d.jpg",
+        "places": 50,
+        "date": datetime.strptime("05.05.2024", "%d.%m.%Y").date(),
+        "attendees": []
+    },
+    {
+        "name_event": "World Education Fair Bulgaria 2024",
+        "description": "Student recruitment event for undergraduate and postgraduate\
+            programs, MBA, high school programs, language programs, gap years...",
+        "photo": "images/Screenshot 2024-03-15 090923.png",
+        "places": 0,
+        "date": datetime.strptime("22.04.2024", "%d.%m.%Y").date(),
+        "attendees": []
+    }
+]
 
 @app.route("/events/create", methods=['POST'])
 def create_events():
@@ -74,6 +106,8 @@ def create_events():
     photo = data.get("photo")
     places = data.get("places", 1000) 
     date = data.get("date", )
+
+    user = request.cookies.get('email')
 
     if date is None:
         return jsonify({'error': 'date is required'}), 400
@@ -89,7 +123,9 @@ def create_events():
         "places" : places,
         "date" : datetime.strptime(date, "%d.%m.%Y").date(),
         "attendees": []  
-    }  
+    }
+    if user:
+        event['owner'] = user
 
     events.append(event)
 
@@ -127,7 +163,7 @@ def sign_up(event_name):
                 if user_email not in event["attendees"]:
                     event["attendees"].append(user_email)
                     event["places"] -= 1 
-                    user["my_events"].append(event_name)
+                    user["my_events"].append(event)
                     return jsonify({'message': 'You have successfully signed up!'})
                 else:
                     return jsonify({'error': 'You are already signed up for this event'}), 400
@@ -183,7 +219,9 @@ def delete_events():
         return jsonify({'error': 'event not found'}), 404
 
     for event in events_to_delete:
-        events.remove(event)
+        owner = event.get("owner")
+        if owner is not None and request.cookies.get('email') == owner:
+            events.remove(event)
 
     return jsonify({'message': 'Event deleted successfully'})
 
@@ -197,7 +235,7 @@ def check_upcoming_events():
     for event in events:
         if event["date"] - today <= timedelta(days = 7):
             remaining_days = ( event["date"] - today).days
-            upcoming_events.append((event, remaining_days))
+            upcoming_events.append(event)
 
     return jsonify(upcoming_events) 
 
